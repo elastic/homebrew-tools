@@ -1,0 +1,6 @@
+* @elastic/ce-tools
+
+/Formula/esdiag.rb @elastic/ce-tools
+/docs/esdiag-release-assets.md @elastic/ce-tools
+/scripts/update-esdiag.sh @elastic/ce-tools
+/.github/workflows/update-esdiag.yml @elastic/ce-tools
