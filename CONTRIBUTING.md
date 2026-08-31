@@ -13,11 +13,14 @@ For ESDiag releases:
 
 1. Confirm the upstream GitHub release is published and is not a draft or
    prerelease.
-2. Run `scripts/update-esdiag.sh VERSION`, or dispatch the `Update ESDiag`
-   workflow with that version.
+2. Run `scripts/update-esdiag.sh VERSION`.
 3. Review every artifact URL and checksum in `Formula/esdiag.rb`.
-4. Confirm CI installs and tests every native-binary platform.
-5. Merge the pull request. No separate bottle-publishing step is required.
+4. Open the Formula pull request using the release operator's GitHub identity.
+5. Confirm CI installs and tests every native-binary platform.
+6. Merge the pull request. No separate bottle-publishing step is required.
+
+The manually dispatched `Update ESDiag` workflow is a recovery path. It requires
+an explicit version and does not discover releases on a schedule.
 
 The current CI matrix covers the three native-binary targets. Intel macOS uses
 the documented source fallback but is not tested in today's workflow matrix.

@@ -67,13 +67,18 @@ is therefore best-effort until dedicated Intel testing is added.
 
 ## Tap update
 
-After the release is published:
+Updating this tap is a required post-publication step in the ESDiag release
+process. The release operator runs:
 
 ```sh
 scripts/update-esdiag.sh VERSION
 ```
 
 The updater downloads and verifies every binary archive and the tagged source,
-validates their layouts, and renders `Formula/esdiag.rb`. The scheduled GitHub
-workflow performs the same operation and opens a pull request when a newer
-stable release is available.
+validates their layouts, and renders `Formula/esdiag.rb`. The release operator
+then runs the repository tests and opens a pull request using their GitHub
+identity so the normal pull-request checks run.
+
+`Update ESDiag` is a manually dispatched recovery workflow, not a release
+discovery mechanism. It requires an explicit stable version and opens an update
+pull request when no update for that version already exists.
