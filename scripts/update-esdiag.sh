@@ -70,7 +70,7 @@ verify_archive() {
   printf '%s  %s\n' "${checksum}" "${archive}" | shasum -a 256 --check --status
   tar -tzf "${archive}" >"${listing}"
 
-  for required in esdiag LICENSE.txt NOTICE.txt
+  for required in esdiag LICENSE.txt NOTICES.md
   do
     if ! grep -Fqx "${required}" "${listing}"
     then
@@ -99,7 +99,7 @@ verify_source_archive() {
   readonly SOURCE_SHA256
   tar -tzf "${archive}" >"${listing}"
 
-  for required in Cargo.toml Cargo.lock LICENSE.txt NOTICE.txt
+  for required in Cargo.toml Cargo.lock LICENSE.txt NOTICES.md
   do
     if ! grep -Fqx "${archive_root}/${required}" "${listing}"
     then
@@ -174,7 +174,7 @@ formula_tmp="${WORK_DIR}/esdiag.rb"
   printf '%s\n' '    else'
   printf '%s\n' '      bin.install "esdiag"'
   printf '%s\n' '    end'
-  printf '%s\n' '    prefix.install "LICENSE.txt", "NOTICE.txt"'
+  printf '%s\n' '    prefix.install "LICENSE.txt", "NOTICES.md"'
   printf '%s\n\n' '  end'
   printf '%s\n' '  test do'
   printf '%s\n' '    assert_match version.to_s, shell_output("#{bin}/esdiag --version")'

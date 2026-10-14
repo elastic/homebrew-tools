@@ -22,13 +22,13 @@ readonly TARGETS=(
 mkdir -p "${RELEASE_DIR}" "${SOURCE_DIR}" "${SOURCE_ROOT}" "${TEST_DIR}/archive"
 printf '%s\n' '#!/usr/bin/env sh' 'echo "esdiag 1.2.3"' >"${TEST_DIR}/archive/esdiag"
 printf '%s\n' 'test license' >"${TEST_DIR}/archive/LICENSE.txt"
-printf '%s\n' 'test notice' >"${TEST_DIR}/archive/NOTICE.txt"
+printf '%s\n' 'test notice' >"${TEST_DIR}/archive/NOTICES.md"
 chmod 755 "${TEST_DIR}/archive/esdiag"
 
 for target in "${TARGETS[@]}"
 do
   asset="esdiag-${VERSION}-${target}.tar.gz"
-  tar -C "${TEST_DIR}/archive" -czf "${RELEASE_DIR}/${asset}" esdiag LICENSE.txt NOTICE.txt
+  tar -C "${TEST_DIR}/archive" -czf "${RELEASE_DIR}/${asset}" esdiag LICENSE.txt NOTICES.md
   checksum="$(shasum -a 256 "${RELEASE_DIR}/${asset}" | awk '{ print $1 }')"
   printf '%s  %s\n' "${checksum}" "${asset}" >>"${RELEASE_DIR}/esdiag-${VERSION}-checksums.txt"
 done
@@ -36,7 +36,7 @@ done
 printf '%s\n' '[package]' 'name = "esdiag"' 'version = "1.2.3"' >"${SOURCE_ROOT}/Cargo.toml"
 printf '%s\n' '# synthetic lockfile' >"${SOURCE_ROOT}/Cargo.lock"
 printf '%s\n' 'test license' >"${SOURCE_ROOT}/LICENSE.txt"
-printf '%s\n' 'test notice' >"${SOURCE_ROOT}/NOTICE.txt"
+printf '%s\n' 'test notice' >"${SOURCE_ROOT}/NOTICES.md"
 tar -C "${TEST_DIR}/source-root" -czf "${SOURCE_DIR}/${VERSION}.tar.gz" "esdiag-${VERSION}"
 
 ESDIAG_RELEASE_BASE_URL="file://${TEST_DIR}/releases" \
@@ -53,6 +53,7 @@ grep -Fq 'on_macos do' "${FORMULA_PATH}"
 grep -Fq 'on_linux do' "${FORMULA_PATH}"
 grep -Fq 'depends_on "rust" => :build' "${FORMULA_PATH}"
 grep -Fq 'system "cargo", "install", *std_cargo_args' "${FORMULA_PATH}"
+grep -Fq 'prefix.install "LICENSE.txt", "NOTICES.md"' "${FORMULA_PATH}"
 
 for target in "${TARGETS[@]}"
 do
