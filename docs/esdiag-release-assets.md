@@ -40,7 +40,7 @@ Every `.tar.gz` archive must contain these files at its root:
 ```text
 esdiag
 LICENSE.txt
-NOTICE.txt
+NOTICES.md
 ```
 
 `esdiag` must be executable and `esdiag --version` must report `VERSION`. The
@@ -57,10 +57,10 @@ https://github.com/elastic/esdiag/archive/refs/tags/VERSION.tar.gz
 ```
 
 The updater verifies that the archive contains `Cargo.toml`, `Cargo.lock`,
-`LICENSE.txt`, and `NOTICE.txt`, and that the package version matches `VERSION`.
+`LICENSE.txt`, and `NOTICES.md`, and that the package version matches `VERSION`.
 The formula declares Rust as a build-only dependency and installs with Cargo's
 locked dependency graph. Notice regeneration is disabled because the tagged
-source already contains `NOTICE.txt`.
+source already contains `NOTICES.md`.
 
 The Intel source-build path is not included in the current CI runner matrix and
 is therefore best-effort until dedicated Intel testing is added.
