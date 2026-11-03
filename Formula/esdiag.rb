@@ -10,13 +10,13 @@ class Esdiag < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/elastic/esdiag/releases/download/0.17.0/esdiag-0.17.0-aarch64-apple-darwin.tar.gz"
-      sha256 "a6ce62fea1aab9370163d30b7ada1e85e0804fffddeb3e2d8703467d5872fc0a"
+      url "https://github.com/elastic/esdiag/releases/download/0.17.1/esdiag-0.17.1-aarch64-apple-darwin.tar.gz"
+      sha256 "a35a6697216c9f8d5e2e59bb892859ce82891f5b1d2fe480f92164dde024ef66"
     end
 
     on_intel do
-      url "https://github.com/elastic/esdiag/archive/refs/tags/0.17.0.tar.gz"
-      sha256 "29ca82da3a90537de6b74631fd99bae779bcd7f2fb24d3d71e9a87cabeb3742a"
+      url "https://github.com/elastic/esdiag/archive/refs/tags/0.17.1.tar.gz"
+      sha256 "6db95eb1b3eaaab953ed46e863ff344eb41b670ccd191cd0376849b0f2d23b28"
 
       depends_on "rust" => :build
     end
@@ -24,13 +24,13 @@ class Esdiag < Formula
 
   on_linux do
     on_arm do
-      url "https://github.com/elastic/esdiag/releases/download/0.17.0/esdiag-0.17.0-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "c2972d975b0bcdc5f187d05bb6e149d08b638f351bd62e4d0cf8edc59fcf415c"
+      url "https://github.com/elastic/esdiag/releases/download/0.17.1/esdiag-0.17.1-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "916fa8f3322e759ba0ff68970b5eb2f22869a64b08eba39b41e9667a409c286e"
     end
 
     on_intel do
-      url "https://github.com/elastic/esdiag/releases/download/0.17.0/esdiag-0.17.0-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "e46cedc21f6ea92233cba27ff96fa9104cb72a515f74acdb4416d645f48407c7"
+      url "https://github.com/elastic/esdiag/releases/download/0.17.1/esdiag-0.17.1-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "a98cd571fa357ac17ba5f7babde4c880e8d8503e5272a78e0c1144f42dc71494"
     end
   end
 
